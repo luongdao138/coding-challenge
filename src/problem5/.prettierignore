@@ -1,0 +1,16 @@
+node_modules
+.next
+yarn.lock
+package.lock.json
+public
+.circleci
+.github
+.idea
+coverage
+.vscode
+out
+scripts
+dist
+docker_data
+.prettierrc
+.vscode

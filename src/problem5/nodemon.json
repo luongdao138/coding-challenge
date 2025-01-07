@@ -1,0 +1,10 @@
+{
+  "watch": ["src", "app-config.js", "templates"],
+  "ext": "ts,js,tsx,jsx,json,html",
+  "ignore": ["node_modules", "dist", "coverage", "**/*.test.ts", "**/*.test.js", "**/*.spec.ts", "**/*.spec.js"],
+  "exec": "npm run build && npm run serve",
+  "restartable": "rs",
+  "env": {
+    "NODE_ENV": "development"
+  }
+}
