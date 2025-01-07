@@ -3,17 +3,17 @@
   "rootDir": ".",
   "verbose": true,
   "testEnvironment": "node",
-  "testRegex": "./test/.*.spec.ts$",
+  "testRegex": "./src/.*.test.ts$",
   "setupFilesAfterEnv": ["dotenv/config"],
   "coverageReporters": ["json-summary", "text", "lcov"],
   "coverageDirectory": "./coverage",
   "collectCoverageFrom": ["./src/**/*.ts"],
   "coverageThreshold": {
     "global": {
-      "branches": 15,
-      "functions": 10,
-      "lines": 15,
-      "statements": 15
+      "branches": 85,
+      "functions": 80,
+      "lines": 85,
+      "statements": 85
     }
   },
   "transform": {

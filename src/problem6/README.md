@@ -3,7 +3,7 @@
 - we call the action which triggers the score update is X
 - initally, we have one api to get the top 10 user's scores
 - also an api to update the score after the completion of the action X.
-- normally, we should do both action X and update score in one API call, which i think will be easier to handle and will not cause some problems (which i will discuss later), and make sure that the update action score action will ony happen if the action X succeeds.
+- normally, we should do both action X and update score in one API call, which i think will be easier to handle and will not cause some problems (which i will discuss later), and make sure that the update score action will ony happen if the action X succeeds.
 - so I assume that the flow is like this:
   - user does the action X from frontend side
   - after the completion of action X, frontend will continue to dispatch an API call to app server to update the user's score.
@@ -32,7 +32,7 @@ As we can see from the requirements, we want to prevent the malicious users from
   - user_id: id of user
   - score: score of that user
 - There are two approaches that i can think of:
-  - Use some caching mechanism like Redis to store top 10 users that have highest scores. Querying from Redis is faster than from. We should set the expire time for the cache and invalidate cache when score update occurs. Redis sorted set is worth to be considered when it comes to scores and ranking.
+  - Use some caching mechanism like Redis to store top 10 users that have highest scores. Querying from Redis is faster than from database. We should set the expire time for the cache and invalidate cache when score update occurs. Redis sorted set is worth to be considered when it comes to scores and ranking.
   - Use database view: we can create a view that store precomputed top 10 scores. This approach ensures consistent performance for frequent reads while recalculating the view only when needed.
 
 ## Logic to prevent above risks.
@@ -63,6 +63,8 @@ As we can see from the requirements, we want to prevent the malicious users from
 - Backend validates the key and updates user's score.
 - Backend broastcasts websocket message to the connected clients => changes will be refected in realtime
 - Frontend needs to listen to the websocket event from backend to update the UI accordingly
+
+(I assume that we all use JWT token for authentication and authorization for both APIs)
 
 ## Diagram
 
